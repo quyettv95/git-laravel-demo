@@ -27,6 +27,16 @@ Route::get('test', function () {
     echo "Create User success";
 });
 
+Route::get('test2', function () {
+    $user = new \App\Models\User;
+    $user->fullname = 'Quản lý';
+    $user->role = config('role.moderator');
+    $user->email = 'quanly@gmail.com';
+    $user->password = bcrypt('123456789');
+    $user->save();
+    echo "Create User success";
+});
+
 
 Route::get('/', 'PageController@homepage');
 Route::get('category/{id}', 'CategoryController@show')->name('category.show');
